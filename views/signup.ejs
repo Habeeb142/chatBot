@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chatbot | Registration</title>
+    <link rel="stylesheet" href="/css/signup.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+</head>
+<body>
+    <!-- Registration Dashboard after login  of Admin -->
+    <div class="">
+    
+      <div class="card col-sm-8 col-md-9">
+        <div class="card-header">
+          Registration Page
+        </div>
+        <div class="card-body">
+            <div class="font-weight-bold"><%=status%></div>
+            <form class="form acc row" action="/register" method="POST" enctype="multipart/form-data" novalidate="novalidate">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="lastname" class="control-label">Lastname:</label>
+                  <input type="lastname" class="form-control" placeholder="enter user Lastname" name="lname">
+                </div>
+                <div class="form-group">
+                  <label for="firstname" class="control-label">Firstname:</label>
+                  <input type="text" class="form-control" placeholder="enter user firstname" name="fname">
+                </div>
+                <div class="form-group">
+                  <label for="middlename" class="control-label">Middlename:</label>
+                  <input type="text" class="form-control" placeholder="enter user middlename" name="mname">
+                </div>
+                <div class="form-group">
+                  <label for="email" class="control-label">Email:</label>
+                  <input type="email" autocomplete="yes" class="form-control" placeholder="enter user mail" name="email">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="mobile" class="control-label">Mobile:</label>
+                  <input type="number" class="form-control" name="mobile" placeholder="enter user mobile number">
+                </div>
+                <div class="form-group">
+                  <label for="date" class="control-label">Date of Birth:</label>
+                  <input type="date" class="form-control" name="dob">
+                </div>
+                <div class="form-group">
+                  <label for="address" class="control-label">Address:</label>
+                  <input type="address" class="form-control" placeholder="enter user address" name="address">
+                </div>
+                <div class="custom-file form-group mt-4">
+                  <label for="passport" class="custom-file-label">Passport</label>
+                  <input type="file" name="avatar" class="form-control custom-file-input" accept="image/*" (change)="showFile($event)">
+                </div>
+                <div class="form-group mt-3">
+                  <input type="submit" class="btn btn-outline-dark form-control col-md-8" value="Submit">
+                </div>
+              </div>
+            </form>
+         </div>
+      </div>
+    </div>
+</body>
+</html>
+
+  

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chatbot | Login</title>
+    <link rel="stylesheet" href="/css/signup.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+</head>
+<body>
+    
+</body>
+</html>
+<div>
+    <div class="alert text-center font-weight-bold"><%=status%></div>
+    
+    <div class="card col-sm-8 col-md-4">
+      <div class="card-header">
+        Login
+      </div>
+      <div class="card-body">
+          <form action="/dashboard" method="POST" class="form acc">
+              <div class="form-group">
+                <label for="acc_no" class="control-label">Account No:</label>
+                <input type="number" class="form-control" placeholder="enter your account number" name="account_no">
+              </div>
+              <div class="form-group">
+                <label for="password" class="control-label">Password:</label>
+                <input type="password" class="form-control" placeholder="password" name="password">
+              </div>
+              <input type="submit" class="btn btn-info" value="Login">
+            </form>
+            
+      </div>
+    </div>
+  </div>
+
+  

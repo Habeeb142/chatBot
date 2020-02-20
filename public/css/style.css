@@ -1,0 +1,62 @@
+body {
+    background-image: url(/images/bg4.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 1;
+}
+.card-box {
+    background: #B1D11F;
+    height: 40vh;
+    opacity: .7;
+    position: absolute;
+}
+
+.card {
+    border-left: 20px solid #B1D11F;
+    margin-top: 200px;
+}
+
+
+.card-header {
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center
+}
+
+.card-body {
+    font-size: 16px;
+    text-align: center;
+}
+
+@media screen and (max-width: 600px){
+    .card-box {
+        background: 0;
+        opacity: .7;
+        position: absolute;
+    }
+    .card {
+        position: relative;
+        left: 0px;
+        border: 8px solid #B1D11F;
+        border-top: 30px solid black;
+        border-bottom: 3px solid black;
+        background-color: wheat;
+    }
+}
+
+a {
+    text-decoration: none !important;
+    border: 2px solid #B1D11F !important;
+    padding: 10px;
+    color: #B1D11F;
+    border-radius: 6px;
+    font-weight: bold;
+    /* background-color: #B1D11F !important;  */
+}
+a:hover {
+    border: 2px solid white !important;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    /* background-color: #B1D11F !important;  */
+}
