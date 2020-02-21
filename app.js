@@ -178,3 +178,68 @@ app.get('/profile/:data', (req,res)=>{
 })
 
 
+app.post('/transfer', (req,res)=>{
+    //checking if all data are well inputed
+    if(req.body.rec_account_no=='' || req.body.amount==''){
+        res.render('fund-transfer', { status: 'Fill all boxes correctly', acc_id: req.body.acc_id })
+    }
+    
+    else{
+        //checking if recipient account number exist
+        check =  `SELECT * FROM customer_tb where account_id = '${req.body.rec_account_no}'`;
+        connection.query(check, (err, data, fields)=>{
+            if(data.length==0){
+                res.render('fund-transfer', { status: 'Account Number not valid', acc_id: req.body.acc_id })
+            }
+            else{
+                //checking sender account balanmce
+                checkBal =  `SELECT * FROM account_tb where account_id = '${req.body.acc_id}'`;
+                connection.query(checkBal, (err, data, fields)=>{
+                    //checking if sending amount is less than or equal to available balacne
+                    if(data[0].account_balance >= req.body.amount){
+                        //removing amount from sender
+                        selectSenderOldBalance =  `SELECT * FROM account_tb where account_id = '${req.body.acc_id}'`
+                        connection.query(selectSenderOldBalance, (err, data__, fields)=>{
+                            newSender = data__[0].account_balance - req.body.amount;
+                            //updating sender account balance
+                            updateSenderAcc = `UPDATE account_tb SET account_balance = '${newSender}' WHERE account_id = '${req.body.acc_id}'`;
+                            connection.query(updateSenderAcc, (err, dat, fields)=>{
+
+                                //adding amount to recipient balance
+                                selectRecipientOldBalance = `SELECT * FROM account_tb where account_id = '${req.body.rec_account_no}'`
+                                connection.query(selectRecipientOldBalance, (err, data_, fields)=>{
+                                    newRecipient = parseFloat(data_[0].account_balance) + parseFloat(req.body.amount);
+                                    //updating recipient account balance
+                                    updateRecipientAcc = `UPDATE account_tb SET account_balance = '${newRecipient}' WHERE account_id = '${req.body.rec_account_no}'`;
+                                    connection.query(updateRecipientAcc, (err, dat_, fields)=>{
+                                        res.render('success');
+                                    })
+                                })
+
+                            })
+                        })
+
+                        
+                    }
+                    else {
+                        //insufficient
+                        res.render('fund-transfer', { status: 'Insufficient Balance', acc_id: req.body.acc_id })
+                    }
+                })
+            }
+        })
+    }
+
+})
+
+//routing into transfer
+app.get('/fund_transfer/:data', (req,res)=>{
+    res.render('fund-transfer', {status: null, acc_id: req.params.data});
+    //fetch account balance from database
+    //fetchData =  `SELECT * FROM customer_tb where account_id = '${req.params.data}'`;
+
+   // connection.query(fetchData, (err, data, fields)=>{
+   // })
+})
+
+
