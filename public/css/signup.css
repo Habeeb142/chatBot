@@ -1,18 +1,3 @@
-.login-hide {
-    display: none;
-}
-
-.login-show {
-    display: visible
-}
-
-.card-box {
-    background: #B1D11F;
-    height: 60vh;
-    opacity: .7;
-    position: absolute;
-}
-
 .card {
     position: relative;
     left: 200px;

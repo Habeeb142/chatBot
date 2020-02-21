@@ -8,9 +8,6 @@ a {
     cursor: pointer;
 }
 
-
-
-
 #sidebar-wrapper {
 min-height: 80vh;
 margin-left: -15rem;
@@ -24,59 +21,45 @@ transition: margin .25s ease-out;
     border: 1px solid black
 }
 
-.toggler {
-    border-radius: 20px;
-    border: 1px solid black;
-    background-color: #B1D11F;
 
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
 }
 
-  #sidebar-wrapper .sidebar-heading {
-    padding: 0.875rem 1.25rem;
-    font-size: 1.2rem;
-  }
+.sidebar-heading{
+    background-color: #B1D11F;
+    width: 250px;
+    cursor: pointer;
+}
+  
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
 
-  .sidebar-heading{
-      background-color: #B1D11F;
-      width: 250px;
-      cursor: pointer;
-  }
+.user-detail {
+    font-size: 17px;
+    border-bottom: 1px solid purple;
+}
+
   
-  #sidebar-wrapper .list-group {
-    width: 15rem;
-  }
-  
-  #page-content-wrapper {
-    min-width: 100vw;
-  }
-  
-  #wrapper.toggled #sidebar-wrapper {
+@media (min-width: 768px) {
+  #sidebar-wrapper {
     margin-left: 0;
   }
 
-  .user-detail {
-      font-size: 17px;
-      border-bottom: 1px solid purple;
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+    border: 4px double whitesmoke;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
   }
 
-  
-  @media (min-width: 768px) {
-    #sidebar-wrapper {
-      margin-left: 0;
-    }
-  
-    #page-content-wrapper {
-      min-width: 0;
-      width: 100%;
-      border: 4px double whitesmoke;
-      border-top-right-radius: 15px;
-      border-bottom-left-radius: 15px;
-    }
-  
-    #wrapper.toggled #sidebar-wrapper {
-      margin-left: -15rem;
-    }
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
   }
+}
 
 
 @media screen and (max-width: 600px){
@@ -86,4 +69,32 @@ transition: margin .25s ease-out;
     }
 
  
+}.boxContainer {
+  background-color: #fff;
+  height: 200px;
+  width: 80%;
+  border-radius: 8px;
+  margin-top: 55px;
+}
+
+.box {
+  height: 150px;
+  background-color: #B1D11F;
+  border: 1px solid white;
+  margin-top: 50px;
+  border-radius: 8px;
+  padding: 16px;
+  /* text-align: center */
+}
+
+
+@media screen and (max-width: 600px){
+  .box {
+      height: 300px;
+      font-size: 20px
+  }
+
+  .boxContainer {
+      height: 350px;
+  }
 }
