@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard | Chatbot</title>
+    <title>Account Details | Chatbot</title>
     <link rel="stylesheet" href="/css/dashboard.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -20,10 +20,13 @@
             <div class="bg-light border-right font-weight-bold mt-5" id="sidebar-wrapper">
               <div class="sidebar-heading" id="menu-toggle">My Tools</div>
               <div class="list-group list-group-flush">
+                <a href="/" class="list-group-item list-group-item-action bg-light">Home</a>
                 <a href="/profile/<%=data.account_id%>" class="list-group-item list-group-item-action bg-light">Profile</a>
                 <a href="/account_balance/<%=data.account_id%>" class="list-group-item list-group-item-action bg-light">Account Balance</a>
                 <a href="/account_details/<%=data.account_id%>" class="list-group-item list-group-item-action bg-light">Account Details</a>
                 <a href="/fund_transfer/<%=data.account_id%>" class="list-group-item list-group-item-action bg-light">Fund Transfer</a>
+                <a href="/fund_account/<%=data.account_id%>" class="list-group-item list-group-item-action bg-light">Fund Account</a>
+                <a href="/withdraw_fund/<%=data.account_id%>" class="list-group-item list-group-item-action bg-light">Withdraw Fund</a>
               </div>
             </div>
           

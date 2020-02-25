@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Transfer | Chatbot</title>
-    <link rel="stylesheet" href="/css/transfer.css">
+    <title>Withdraw | Chatbot</title>
     <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/transfer.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
 </head>
+
 <body>
     
     <div class="m-1">
@@ -31,26 +32,24 @@
             </div>
           </div>
         
-        <!-- Transfer Parameters -->
+        <!-- WithdrW Parameters -->
         <div class="container mt-3">
             <div class="box col-6 offset-3">
-                <h3 class="mb-1 text-center">TRANSFER FUND</h3>
-                <form action="/transfer" method="POST" class="form acc" autocomplete="off">
+                <h3 class="m-4 text-center">WITHDRAW FUND</h3>
+                <form action="/withdraw" method="POST" class="form acc" autocomplete="off">
                 <div class="alert text-center text-secondary font-weight-bold"><%=status%></div>
-                    <div class="form-group">
-                    <label for="acc_no" class="control-label mt-2">Recipient Account Number:</label>
-                    <input type="number" class="form-control" placeholder="Recipient Account Number" name="rec_account_no">
-                    </div>
+                    
                     <div class="form-group">
                     <label for="amount" class="control-label">Amount:</label>
-                    <input type="number" class="form-control" placeholder="Amount" name="amount">
+                    <input type="number" class="form-control" placeholder="Amount to withdraw" name="amount">
                     <input type="hidden" class="form-control" name="acc_id" value="<%=acc_id%>">
                     </div>
-                    <button type="submit" class="btn form-control mt-5 font-weight-bold btn-outline-dark col-md-5 offset-md-4" >Transfer</button>
+                    <button type="submit" class="btn form-control mt-5 col-md-4 offset-md-4 font-weight-bold btn-outline-dark">Withdraw</button>
                 </form>
             </div>
         </div>
-        <!-- End Transfer Parameters -->
+        <!-- End Withdraw Parameters -->
     </div>
 </body>
+
 </html>

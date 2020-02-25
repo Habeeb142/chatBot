@@ -235,11 +235,61 @@ app.post('/transfer', (req,res)=>{
 //routing into transfer
 app.get('/fund_transfer/:data', (req,res)=>{
     res.render('fund-transfer', {status: null, acc_id: req.params.data});
-    //fetch account balance from database
-    //fetchData =  `SELECT * FROM customer_tb where account_id = '${req.params.data}'`;
-
-   // connection.query(fetchData, (err, data, fields)=>{
-   // })
 })
 
+//routing into transfer
+app.get('/withdraw_fund/:data', (req,res)=>{
+    res.render('withdraw-fund', {status: null, acc_id: req.params.data});
+})
 
+app.post('/withdraw', (req,res)=>{
+    //checking if all data are well inputed
+    if(req.body.amount==''){
+        res.render('withdraw-fund', { status: 'Fill the box correctly', acc_id: req.body.acc_id })
+    }
+
+    //checking sender account balanmce
+    checkBal =  `SELECT * FROM account_tb where account_id = '${req.body.acc_id}'`;
+    connection.query(checkBal, (err, data, fields)=>{
+        //checking if sending amount is less than or equal to available balacne
+        if(data[0].account_balance >= req.body.amount){
+            //removing amount from sender
+            selectOldBalance =  `SELECT * FROM account_tb where account_id = '${req.body.acc_id}'`
+            connection.query(selectOldBalance, (err, data__, fields)=>{
+                _newAmount = data__[0].account_balance - req.body.amount;
+                //updating sender account balance
+                updateAcc = `UPDATE account_tb SET account_balance = '${_newAmount}' WHERE account_id = '${req.body.acc_id}'`;
+                connection.query(updateAcc, (err, dat, fields)=>{
+                    res.render('success', {acc_id: req.body.acc_id});
+                })
+            })            
+        }
+        else {
+            //insufficient
+            res.render('withdraw-fund', { status: 'Insufficient Balance', acc_id: req.body.acc_id })
+        }
+    })
+})
+
+//routing into transfer
+app.get('/fund_account/:data', (req,res)=>{
+    res.render('fund-account', {status: null, acc_id: req.params.data});
+})
+
+app.post('/fund_your_account', (req,res)=>{
+    if(req.body.amount!=''){
+        //checking sender account balanmce
+        checkBal =  `SELECT * FROM account_tb where account_id = '${req.body.acc_id}'`;
+        connection.query(checkBal, (err, data, fields)=>{
+             
+            newBalance = parseFloat(data[0].account_balance) + parseFloat(req.body.amount);
+            //updating sender account balance
+            updateAcc = `UPDATE account_tb SET account_balance = '${newBalance}' WHERE account_id = '${req.body.acc_id}'`;
+            connection.query(updateAcc, (err, dat, fields)=>{
+                res.render('success', {acc_id: req.body.acc_id});
+            })
+                
+        })
+        
+    }
+})
